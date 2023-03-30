@@ -1,0 +1,28 @@
+{% include 'adminheader.html' %}
+
+
+<center>
+    <div class="img-div"></div>
+    <h3>View Departments</h3>
+    <form action="" method="post">
+    <table class="table table-striped tbl-new bg-light shadow" style="max-width: 1200px;">
+        <tr>
+            <th>Index</th>
+            <th>Department</th>
+            <th>Hod</th>
+        </tr>
+        {% for row in data['res'] %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ row['dep_name'] }}</td>
+            <td>{{ row['hod_name'] }}</td>
+            <td><a href="admin_view_class?did={{ row['department_id'] }}" class="btn btn-primary">View Class's</a></td>
+      
+
+        </tr>
+        {% endfor %}
+    </table>
+</form>
+</center>
+
+{% include 'footer.html' %}
