@@ -3,6 +3,11 @@ from public import public
 from admin import admin
 from principal import principal
 
+import smtplib
+from email.mime.text import MIMEText
+from flask_mail import Mail
+
+
 app=Flask(__name__)
 
 app.secret_key="prayulla"
@@ -10,6 +15,15 @@ app.secret_key="prayulla"
 app.register_blueprint(admin)
 app.register_blueprint(principal)
 app.register_blueprint(public)
+
+
+mail=Mail(app)
+app.config['MAIL_SERVER']='smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USERNAME'] = 'sngistoutpass@gmail.com'
+app.config['MAIL_PASSWORD'] = 'izgqjuqneorhokje'
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
 
 @app.errorhandler(404)
 def not_found(e):
