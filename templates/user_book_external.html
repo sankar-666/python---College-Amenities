@@ -1,0 +1,38 @@
+
+{% include 'userheader.html' %}
+
+<center>
+    <div class="img-div"></div>
+    <h3 class="m-3">Bokkings</h3>
+<style>
+    th,tr{
+        color: black !important;
+    }
+</style>
+
+    <form action="" method="post" class="form" id="form">
+        <table class="table form-group  " style="color: black;">
+            <tr>
+                <th>For Date</th>
+                <td><input type="date" required min="{{ today }}" class="form-control" name="fdate" id=""></td>
+            </tr>
+				 <tr>
+                <th>time</th>
+                <td><input type="time" required  class="form-control" name="time" id=""></td>
+            </tr>
+ <tr>
+                <th>purpose</th>
+                <td><input type="text" required class="form-control" name="purpose" id=""></td>
+            </tr>
+
+            <tr>
+               
+                <td colspan="2" align="center"><input type="submit" class="btn btn-success" name="btn" id="btn"></td>
+            </tr>
+            </table>
+            </form>
+
+</center>
+
+
+{% include 'footer.html' %}

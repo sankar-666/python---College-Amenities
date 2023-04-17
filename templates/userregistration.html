@@ -1,0 +1,46 @@
+{%include 'publicheader.html' %}
+
+
+ <div class="img-div"  style="height: 100vh;display: flex;justify-content: center;align-items:center ;background-image: url('/static/user/assets/images/img67.jpg');">
+        <form action="" method="post" style="background-color: rgba(255, 255, 255, .3);width: 600px;border-radius: 4px;padding: 20px; margin-top: 150px">
+            <h1 style="color: white;">Registration</h1>
+            <table class="table" style="color: white;">
+			<tr>
+				<th>First name</th>
+				<td><input type="text" name="fname"  class="form-control" required=""></td>
+			</tr>
+			<tr>
+				<th>Last Name</th>
+				<td><input type="text" name="lname"  class="form-control" required=""></td>
+			</tr>
+			<tr>
+				<th>place</th>
+				<td><input type="text" name="place"  class="form-control" required=""></td>
+			</tr>
+			<tr>
+				<th>phone</th>
+				<td><input type="text" name="phone"  class="form-control" required=""></td>
+			</tr>
+			<tr>
+				<th>Email</th>
+				<td><input type="email" name="email"  class="form-control" pattern=".+@gmail\.com" required=""></td>
+			</tr>
+			<tr>
+				<th>Username</th>
+				<td><input type="text" name="uname"  class="form-control" required=""></td>
+			</tr>
+			<tr>
+				<th>Password</th>
+				<td><input type="Password" name="pasd"  class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required=""></td>
+			</tr>
+			<tr>
+				<td align="center" colspan=2><input type="submit" name="submit" value="ADD" class="btn btn-primary"></td>
+			</tr>
+		</table>
+		
+		
+	</center>
+	</form>
+</center>
+
+{%include 'footer.html' %}

@@ -33,6 +33,13 @@ def login():
                     session['pid']=val[0]['principal_id']
                     flash("Login Success")
                     return redirect(url_for("principal.principalhome"))
+            elif utype == "user":
+                q="select * from user where login_id='%s'"%(session['loginid'])
+                val=select(q)
+                if val:
+                    session['uid']=val[0]['user_id']
+                    flash("Login Success")
+                    return redirect(url_for("user.userhome"))
                 
             else:
                 flash("failed try again")
@@ -43,3 +50,24 @@ def login():
 
 
     return render_template("login.html")
+
+
+@public.route("/userregistration",methods=['post','get'])
+def userregistration():
+    
+    if "submit" in request.form:
+        fname=request.form['fname']
+        lname=request.form['lname']
+        place=request.form['place']
+        phone=request.form['phone']
+        email=request.form['email']
+        uname=request.form['uname']
+        pasd=request.form['pasd']
+        q="insert into login values(null,'%s','%s','user')"%(uname,pasd)
+        ids=insert(q)
+        print(ids)
+        s="insert into user values(null,'%s','%s','%s','%s','%s','%s')"%(ids,fname,lname,place,phone,email)
+        insert(s)
+        flash("Registration Successfull")
+        return redirect(url_for("public.login"))
+    return render_template("userregistration.html")

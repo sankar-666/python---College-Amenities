@@ -1,0 +1,31 @@
+{% include 'userheader.html' %}
+
+<center>
+    <div class="img-div"></div>
+    <h3 class="m-3">Other Amenities</h3>
+    <form action="" method="post">
+    <table class="table table-striped tbl-new bg-light shadow" style="max-width: 1200px;">
+        <tr>
+            <th>Slno.</th>
+            <th>Type</th>
+            <th>Name</th>
+            <th>Amount</th>
+            <th></th>
+           
+
+        </tr>
+        {% for row in data['res'] %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ row['type_name'] }}</td>
+            <td>{{ row['name'] }}</td>
+            <td>{{ row['amount'] }}</td>
+           
+            <td><a href="user_book_external?bid={{ row['amenity_id'] }}&name={{ row['name'] }}&ty={{ row['type_name'] }}" class="btn btn-primary">Book</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</form>
+</center>
+
+{% include 'footer.html' %}

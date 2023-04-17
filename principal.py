@@ -307,7 +307,7 @@ def principal_view_internal_bookings():
 @principal.route('/principal_view_external_bookings')
 def principal_view_external_bookings():
     data={}
-    q="SELECT * FROM `user`,`bookings`,`amenites`,amenity_type WHERE `user`.`user_id`=`bookings`.`user_id` AND `bookings`.`amenity_id`=`amenites`.`amenity_id` and `amenites`.`amenity_type_id`=`amenity_type`.`amenity_type_id` and type_name='Internally'"
+    q="SELECT * FROM `user`,`bookings`,`amenites`,amenity_type WHERE `user`.`user_id`=`bookings`.`user_id` AND `bookings`.`amenity_id`=`amenites`.`amenity_id` and `amenites`.`amenity_type_id`=`amenity_type`.`amenity_type_id` and type_name='Externally'"
     data['res']=select(q)
 
     if 'action' in request.args:
@@ -395,3 +395,31 @@ def principal_view_external_bookings():
 
     return render_template('principal_view_external_bookings.html',data=data)
 
+
+
+@principal.route('/principal_view_payment')
+def principal_view_payment():
+    data={}
+    bid=request.args['bid']
+    q="select * from payment where booking_id='%s'"%(bid)
+    data['res']=select(q)
+    return render_template('principal_view_payment.html',data=data)
+
+
+
+# @admin.route('/room_payment')
+# def room_payment():
+#     data={}
+#     bid=request.args['bid']
+#     q="select * from payment where book_id='%s' and type='room'"%(bid)
+#     data['res']=select(q)
+#     if 'action' in request.args:
+#         action=request.args['action']
+#     else:
+#         action=None
+#     if action == "accept":
+#         q="update booking set status='Payment Accepted' where booking_id='%s'"%(bid)
+#         update(q)
+#         flash("Payment Accepted")
+#         return redirect(url_for("admin.room_payment",bid=bid))
+#     return render_template('room_payment.html',data=data,bid=bid)

@@ -1,0 +1,35 @@
+{% include 'userheader.html' %}
+
+<center>
+    <div class="img-div"></div>
+    <h3>View Departments</h3>
+    <form action="" method="post">
+    <table class="table table-striped tbl-new bg-light shadow" style="max-width: 1200px;">
+        <tr>
+            <th>slno.</th>
+            <th>Principal Name</th>
+             <th>Department</th>
+              <th>HOD</th>
+              <th></th>
+           
+
+        </tr>
+        {% for row in data['res'] %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ row['fname'] }} {{ row['lname'] }}</td>
+            <td>{{ row['dep_name'] }}</td>
+
+                <td>{{ row['hod_name'] }}</td> 
+           
+           
+            <td><a href="user_view_class?bid={{ row['department_id'] }}" class="btn btn-primary">View Class</a></td>
+           
+
+        </tr>
+        {% endfor %}
+    </table>
+</form>
+</center>
+
+{% include 'footer.html' %}

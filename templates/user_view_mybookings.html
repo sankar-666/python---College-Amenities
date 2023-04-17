@@ -1,12 +1,12 @@
-{% include 'principalheader.html' %}
+{% include 'userheader.html' %}
 
 <center>
     <div class="img-div"></div>
-    <h3 class="m-3">View External Bokkings</h3>
+    <h3>View Bookings</h3>
     <form action="" method="post">
     <table class="table table-striped tbl-new bg-light shadow" style="max-width: 1200px;">
         <tr>
-            <th>User</th>
+          
             <th>Place</th>
             <th>Phone</th>
             <th>Email</th>
@@ -19,7 +19,7 @@
         </tr>
         {% for row in data['res'] %}
         <tr>
-            <td>{{ row['fname'] }}{{ row['lname'] }}</td>
+        
             <td>{{ row['place'] }}</td>
             <td>{{ row['phone'] }}</td>
             <td>{{ row['email'] }}</td>
@@ -27,13 +27,10 @@
             <td>{{ row['type_name'] }}</td>
             <td>{{ row['purpose'] }}</td>
             <td>{{ row['date'] }}</td>
-            {% if row['status'] == 'pending' %}
-            <td><a onclick="return confirm('Are you Sure?')" href="?action=accept&bid={{ row['bookings_id'] }}&uid={{ row['user_id'] }}" class="btn btn-success">Accept</a></td>
-            <td><a onclick="return confirm('Are you Sure?')" href="?action=reject&bid={{ row['bookings_id'] }}&uid={{ row['user_id'] }}" class="btn btn-danger">Reject</a></td>
-            {% else %}
-            <td><a  href="principal_view_payment?bid={{ row['bookings_id'] }}" class="btn btn-danger">View Payment</a></td>
-            <!-- <td>{{ row['status'] }}</td> -->
-            {% endif %}
+            <td>{{ row['status'] }}</td>
+           <!--  {% if row['type_name'] == 'external' %}
+            <td><a href="view_payment?bid={{ row['bookings_id'] }}" class="btn btn-primary">View Payment</a></td>
+            {% endif %} -->
 
         </tr>
         {% endfor %}

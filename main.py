@@ -2,6 +2,8 @@ from flask import Flask,render_template
 from public import public
 from admin import admin
 from principal import principal
+from user import user
+from api import api
 
 import smtplib
 from email.mime.text import MIMEText
@@ -14,7 +16,9 @@ app.secret_key="prayulla"
 
 app.register_blueprint(admin)
 app.register_blueprint(principal)
+app.register_blueprint(user)
 app.register_blueprint(public)
+app.register_blueprint(api,url_prefix="/api")
 
 
 mail=Mail(app)
@@ -29,4 +33,4 @@ app.config['MAIL_USE_SSL'] = True
 def not_found(e):
   return render_template("404.html")
 
-app.run(debug=True,port=5088,host="0.0.0.0")
+app.run(debug=True,port=5089,host="0.0.0.0")

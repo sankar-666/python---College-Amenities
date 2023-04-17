@@ -1,0 +1,35 @@
+{% include 'userheader.html' %}
+
+<center>
+    <div class="img-div"></div>
+    <h3>View Bokkings</h3>
+    <form action="" method="post">
+    <table class="table table-striped tbl-new bg-light shadow" style="max-width: 1200px;">
+        <tr>
+            <th>slno.</th>
+            <th>Type</th>
+            <th></th>
+            <th></th>
+           
+
+        </tr>
+        {% for row in data['res'] %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ row['type_name'] }}</td>
+           
+           {% if row['type_name']=='Internally'%}
+            <td><a href="user_view_internal?bid={{ row['amenity_type_id'] }}" class="btn btn-primary">View internal amenities</a></td>
+            {% elif row['type_name']=='Externally' %}
+            <td><a href="user_view_external?bid={{ row['amenity_type_id'] }}" class="btn btn-primary">View External amenities</a></td>
+            {% else %}
+            <td><a href="user_view_other?bid={{ row['amenity_type_id'] }}" class="btn btn-primary">View Other amenities</a></td>
+            {% endif %}
+            <td><a href="user_view_dept?bid={{ row['amenity_type_id'] }}" class="btn btn-primary">View Department</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</form>
+</center>
+
+{% include 'footer.html' %}
